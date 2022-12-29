@@ -5,33 +5,24 @@ function setup() {
 function draw() {
   background(247);
 
-  fill(0);
-  rect(0, 0, width / 2, height);
-
-  let d = 30;
-  let num = 10;
-
-  noStroke();
+  let d = 10;
+  let num = 360;
 
   push();
   translate(width / 2, height / 2);
 
-  for (let i =0; i < num; i++) {
-    let R = 150;
-    // ラジアン
-    // let x = R * cos(TWO_PI * i /num);
-    // let y = R * sin(TWO_PI * i /num);
-    // 度数法->ラジアン
-    let x = R * cos(radians(360 * i /num));
-    let y = R * sin(radians(360 * i /num));
+  noStroke();
 
-    if (x > 0) {
-      fill(0);
-    } else {
-      fill(247);
+  for (let j = 1; j <= 5; j++) {
+    fill(50 * j, 100, 200);
+
+    for (let i =0; i < num; i++) {
+      let R = (40 + 25 * j) + 30 * abs(sin(radians(i * 3)));
+      let x = R * cos(radians(360 * i /num));
+      let y = R * sin(radians(360 * i /num));
+
+      circle(x, y, d);
     }
-
-    circle(x, y, d);
   }
 
   pop();
